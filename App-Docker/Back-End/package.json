@@ -1,0 +1,15 @@
+{
+  "name": "lagash-university-backend",
+  "version": "1.0.0",
+  "description": "Node.js on Docker with Express",
+  "author": "Ignacio Aedo <ignaciods.3108@gmail.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "prod": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.1"
+  }
+}
