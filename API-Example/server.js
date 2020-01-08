@@ -1,13 +1,16 @@
 const config = require("./settings/appsettings.secrets.json");
 const express = require("express");
 const cors = require("cors");
-const index = require("./routes");
+const api = require("./routes/api");
 
 // Constants
 const { ALLOWED_ORIGINS, HOST, PORT } = config;
 
 // App
 const app = express();
+
+//Routes Api
+app.use("/api", api);
 
 app.use(
   cors({
@@ -37,7 +40,6 @@ app.use((req, res, next) => {
   });
 });
 
-app.use("", index);
-
-app.listen(PORT, HOST);
-console.log(`Corriendo  API en http://${HOST}:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`API Corriendo en http://localhost:${PORT}`);
+});
