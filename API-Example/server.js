@@ -1,7 +1,7 @@
 const config = require("./settings/appsettings.secrets.json");
 const express = require("express");
 const cors = require("cors");
-const api = require("./routes/api");
+const index = require("./routes/index");
 
 // Constants
 const { ALLOWED_ORIGINS, HOST, PORT } = config;
@@ -9,8 +9,12 @@ const { ALLOWED_ORIGINS, HOST, PORT } = config;
 // App
 const app = express();
 
-//Routes Api
-app.use("/api", api);
+//Routes
+const { number, date, uf, qr } = index;
+app.use("/number", number);
+app.use("/date", date);
+app.use("/uf", uf);
+app.use("/qr", qr);
 
 app.use(
   cors({

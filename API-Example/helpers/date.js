@@ -22,7 +22,7 @@ const dateToday = () => {
   if (mm < 10) {
     mm = "0" + mm;
   }
-  return (today = dd + "-" + mm + "-" + yyyy);
+  return dd + "-" + mm + "-" + yyyy;
 };
 
 module.exports = { calculateAge, dateToday };

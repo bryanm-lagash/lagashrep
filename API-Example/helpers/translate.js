@@ -46,11 +46,10 @@ function Decenas(num) {
           return "DIECI" + Unidades(unidad);
       }
     case 2:
-      switch (unidad) {
-        case 0:
-          return "VEINTE";
-        default:
-          return "VEINTI" + Unidades(unidad);
+      if (unidad == 0) {
+        return "VEINTE";
+      } else {
+        return "VEINTI" + Unidades(unidad);
       }
     case 3:
       return DecenasY("TREINTA", unidad);
@@ -110,7 +109,7 @@ function Seccion(num, divisor, strSingular, strPlural) {
   const cientos = Math.floor(num / divisor);
   const resto = num - cientos * divisor;
 
-  letras = "";
+  let letras = "";
 
   if (cientos > 0)
     if (cientos > 1) letras = Centenas(cientos) + " " + strPlural;
@@ -122,12 +121,12 @@ function Seccion(num, divisor, strSingular, strPlural) {
 } //Seccion()
 
 function Miles(num) {
-  divisor = 1000;
-  cientos = Math.floor(num / divisor);
-  resto = num - cientos * divisor;
+  const divisor = 1000;
+  const cientos = Math.floor(num / divisor);
+  const resto = num - cientos * divisor;
 
-  strMiles = Seccion(num, divisor, "MIL", "MIL");
-  strCentenas = Centenas(resto);
+  const strMiles = Seccion(num, divisor, "MIL", "MIL");
+  const strCentenas = Centenas(resto);
 
   if (strMiles == "") return strCentenas;
 
@@ -135,12 +134,12 @@ function Miles(num) {
 } //Miles()
 
 function Millones(num) {
-  divisor = 1000000;
-  cientos = Math.floor(num / divisor);
-  resto = num - cientos * divisor;
+  const divisor = 1000000;
+  const cientos = Math.floor(num / divisor);
+  const resto = num - cientos * divisor;
 
-  strMillones = Seccion(num, divisor, "UN MILLON DE", "MILLONES DE");
-  strMiles = Miles(resto);
+  const strMillones = Seccion(num, divisor, "UN MILLON DE", "MILLONES DE");
+  const strMiles = Miles(resto);
 
   if (strMillones == "") return strMiles;
 
@@ -148,7 +147,7 @@ function Millones(num) {
 } //Millones()
 
 function NumeroALetras(num) {
-  var data = {
+  const data = {
     numero: num,
     enteros: Math.floor(num),
     centavos: Math.round(num * 100) - Math.floor(num) * 100,
@@ -192,6 +191,8 @@ function NumeroALetras(num) {
       data.letrasCentavos
     );
 } //NumeroALetras()
+
+console.log(NumeroALetras(21));
 
 module.exports = {
   NumeroALetras

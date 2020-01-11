@@ -7,7 +7,7 @@ ARG some_variable_name=valorPorDefecto
 
 RUN echo "Argumento entregado $some_variable_name"
 
-ENV ENV_VAR_TEST=$some_variable_name
+ENV ENVIROMENT=$some_variable_name
 
 WORKDIR /usr/src/app
 
@@ -18,7 +18,7 @@ COPY package*.json ./
 
 # Bundle app source
 COPY . .
-
+EXPOSE 5200
 CMD [ "node", "index.js" ]
 
 # docker build --build-arg some_variable_name=argumento_desde_comando_build -t   ignaciods/docker-env-example:20190824-QA .
